@@ -7,7 +7,7 @@ load_dotenv()
 
 KEY = os.environ.get('KEY')
 
-df_faucet = pd.read_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistinternal.csv',
+df_faucet = pd.read_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistinternal2.csv',
                         index_col=False)
 
 df_faucet = df_faucet.drop_duplicates(subset='to')
@@ -53,5 +53,5 @@ for address in df_faucet['to']:
     print(df_temp)
     df_result = pd.concat([df_result, df_temp])
 
-df_result.to_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistaddres.csv')
+df_result.to_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistaddres2.csv')
 
