@@ -1,5 +1,4 @@
 import os
-import json
 import pandas as pd
 import arbi_connection as ab
 from dotenv import load_dotenv
@@ -8,7 +7,7 @@ load_dotenv()
 
 KEY = os.environ.get('KEY')
 
-df_faucet = pd.read_csv('/home/oscar/Github/arbisepolia_scan/data_raw/data_sepolia2.csv',
+df_faucet = pd.read_csv('/home/oscar/Github/arbisepolia_scan/data_raw/data_sepolia3.csv',
                         index_col=False)
 
 df_result = pd.DataFrame()
@@ -42,5 +41,5 @@ for hash_id in df_faucet['Txhash']:
     print(df_temp)
     df_result = pd.concat([df_result, df_temp])
 
-df_result.to_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistinternal2.csv')
+df_result.to_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistinternal3.csv')
 
