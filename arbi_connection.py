@@ -3,11 +3,12 @@ import requests
 
 class ArbiSepScanner(object):
 
-    def __init__(self, key):
+    def __init__(self, key, url):
         self.key = key
+        self.url = url
 
     def transaction_address(self, address):
-        url = (f"https://api-sepolia.arbiscan.io/api"
+        url = (f"{self.url}"
                f"?module=account"
                f"&action=txlist"
                f"&address={address}"
@@ -23,7 +24,7 @@ class ArbiSepScanner(object):
         return response.json()
 
     def transaction_hash(self, t_hash):
-        url = (f"https://api-sepolia.arbiscan.io/api"
+        url = (f"{self.url}"
                f"?module=account"
                f"&action=txlistinternal"
                f"&txhash={t_hash}"

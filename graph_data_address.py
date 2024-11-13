@@ -6,8 +6,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 KEY = os.environ.get('KEY')
+URL = os.environ.get('ARBITRUM_URL')
 
-df_faucet = pd.read_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistinternal4.csv',
+df_faucet = pd.read_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistinternal5.csv',
                         index_col=False)
 
 df_faucet = df_faucet.drop_duplicates(subset='to')
@@ -17,7 +18,7 @@ df_result = pd.DataFrame()
 for address in df_faucet['to']:
     print(address)
     try:
-        temp_resp = ab.ArbiSepScanner(key=KEY).transaction_address(address=address)
+        temp_resp = ab.ArbiSepScanner(key=KEY, url=URL).transaction_address(address=address)
     except:
         temp_resp = {
                       "status": "1",
@@ -53,5 +54,5 @@ for address in df_faucet['to']:
     print(df_temp)
     df_result = pd.concat([df_result, df_temp])
 
-df_result.to_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistaddres4.csv')
+df_result.to_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistaddres5.csv')
 

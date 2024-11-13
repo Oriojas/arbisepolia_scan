@@ -6,8 +6,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 KEY = os.environ.get('KEY')
+URL = os.environ.get('ARBITRUM_URL')
 
-df_faucet = pd.read_csv('/home/oscar/Github/arbisepolia_scan/data_raw/data_arbitrumOne.csv',
+df_faucet = pd.read_csv('/home/oscar/Github/arbisepolia_scan/data_raw/data_arbitrumOne2.csv',
                         index_col=False)
 
 df_result = pd.DataFrame()
@@ -15,7 +16,7 @@ df_result = pd.DataFrame()
 for hash_id in df_faucet['Txhash']:
     print(hash_id)
     try:
-        temp_resp = ab.ArbiSepScanner(key=KEY).transaction_hash(t_hash=hash_id)
+        temp_resp = ab.ArbiSepScanner(key=KEY, url=URL).transaction_hash(t_hash=hash_id)
     except:
         temp_resp = {"status": "1",
                      "message": "OK",
@@ -41,5 +42,5 @@ for hash_id in df_faucet['Txhash']:
     print(df_temp)
     df_result = pd.concat([df_result, df_temp])
 
-df_result.to_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistinternal4.csv')
+df_result.to_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistinternal5.csv')
 
