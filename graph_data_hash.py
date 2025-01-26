@@ -6,9 +6,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 KEY = os.environ.get('KEY')
-URL = os.environ.get('ARBITRUM_URL')
+URL = os.environ.get('SEPOLIA_URL')
 
-df_faucet = pd.read_csv('/home/oscar/Github/arbisepolia_scan/data_raw/data_arbitrumOne2.csv',
+df_faucet = pd.read_csv('/home/oscar/Github/arbisepolia_scan/data_raw/data_sepolia4.csv',
                         index_col=False)
 
 df_result = pd.DataFrame()
@@ -42,5 +42,5 @@ for hash_id in df_faucet['Txhash']:
     print(df_temp)
     df_result = pd.concat([df_result, df_temp])
 
-df_result.to_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistinternal5.csv')
+df_result.to_csv('/home/oscar/Github/arbisepolia_scan/output_data/txlistinternal6.csv')
 
